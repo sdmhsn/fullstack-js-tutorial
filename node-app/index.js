@@ -1,10 +1,10 @@
 const http = require('http');
-const hello = require('./helloWorld'); // importing module
+const moment = require('moment'); // importing npm module
 
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
-  res.write(hello.hello()); // using the module. hello.world() for calling the world function
+  res.write(moment().calendar()); // using the npm module
   res.end();
 });
 

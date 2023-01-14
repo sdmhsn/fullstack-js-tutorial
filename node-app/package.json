@@ -10,5 +10,8 @@
     "node"
   ],
   "author": "Saddam Husein",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.29.4"
+  }
 }
