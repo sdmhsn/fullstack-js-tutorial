@@ -1,8 +1,10 @@
 const http = require('http');
+const hello = require('./helloWorld'); // importing module
+
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
-  res.write('Hello World!');
+  res.write(hello); // using the module
   res.end();
 });
 
