@@ -6,4 +6,9 @@ const server = http.createServer((req, res) => {
   res.end();
 });
 
-server.listen(3000);
+const hostname = 'localhost'; // or 127.0.0.1
+const port = 3000;
+
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname} on port: ${port}`);
+});
