@@ -1,7 +1,17 @@
-# Mastering Fullstack JavaScript Tutorial
+## 02. ExpressJS
 
-This repository contains the course source code of Fullstack JavaScript Development
+Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
 
-## Contents:
+### 02a. Installing ExpressJS Web Framework Package
 
-1.  [NodeJS](https://github.com/sdmhsn/fullstack-js-tutorial/tree/01-nodejs)
+1. Create NodeJS project:
+
+```sh
+npm init
+```
+
+2. Install ExpressJS package:
+
+```sh
+npm install express
+```
