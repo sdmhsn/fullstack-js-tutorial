@@ -67,3 +67,33 @@ To run JavaScript file using NodeJS, use command:
 ```sh
 node index.js
 ```
+
+### 01e. Installing NPM Module/Package Into Project App
+
+To install NPM module/package in your project (local), use `npm install <package_name>` or `npm i <package_name>` command. These following commands shown how to install moment package into your project:
+
+```sh
+npm install moment
+```
+
+or
+
+```sh
+npm i moment
+```
+
+### 01f. Verifying Package Installation
+
+To see if you already have module/package installed in your system (global) or project (local), use commands:
+
+- Global Package
+
+```sh
+npm ls --location=global
+```
+
+- Local Package
+
+```sh
+npm ls
+```
