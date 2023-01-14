@@ -1,7 +1,3 @@
-# Mastering Fullstack JavaScript Tutorial
-
-This repository contains the course source code of Fullstack JavaScript Development
-
 ## 01. NodeJS
 
 Node.js® is an open-source, cross-platform JavaScript runtime environment
