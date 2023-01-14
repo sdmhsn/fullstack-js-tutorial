@@ -97,3 +97,17 @@ npm ls --location=global
 ```sh
 npm ls
 ```
+
+### 01e. Running Project By Using Scripts
+
+To run a NodeJS project by using scripts that you have written in the package.json, use these commands:
+
+```sh
+npm run start
+```
+
+or
+
+```sh
+npm start
+```
