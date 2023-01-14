@@ -1,10 +1,14 @@
 const http = require('http');
-const moment = require('moment'); // importing npm module
 
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.write(moment().calendar()); // using the npm module
+  res.setHeader('Content-Type', 'text/json'); // set header to text/json
+  res.write(
+    JSON.stringify({
+      status: 'success',
+      message: 'response success',
+    })
+  ); // write the JSON response using JSON.stringify()
   res.end();
 });
 
