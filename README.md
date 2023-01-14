@@ -59,3 +59,11 @@ To create new NodeJS project, use command:
 ```sh
 npm init
 ```
+
+### 01d. Running index.js Using NodeJS
+
+To run JavaScript file using NodeJS, use command:
+
+```sh
+node index.js
+```
