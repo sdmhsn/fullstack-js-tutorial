@@ -1,34 +1,28 @@
 const express = require('express');
-
 const app = express();
 const port = 3000;
 
-// GET
-app.get('/', (req, res) => {
-  res.send('request by GET method'); // .send() expressjs method. only can use once
-  // res.write('Hello '); // .write() nodejs method. can use multiple times
-  // res.write('World!');
+app.get('/post/:id', (req, res) => {
+  // console.log(req.params);
+  // console.log(req.params.id);
+  res.send('artikel ke-' + req.params.id); // the id property get from the :id parameter
+});
+
+/* ================= using query string ================= */
+// Sample 1:
+// app.get('/foods', (req, res) => {
+//   console.log(req.query);
+//   console.log(req.query.page);
+//   console.log(req.query.sort);
+//   res.end();
+// });
+
+// Sample 2:
+app.get('/foods', (req, res) => {
+  const page = req.query.page ? req.query.page : 1;
+  res.write('Foods page: ' + page + '\n');
+  if (req.query.sort) res.write('Sort by: ' + req.query.sort);
   res.end();
-});
-
-// POST
-app.post('/contoh', (req, res) => {
-  res.send('request by POST method');
-});
-
-// PUT
-app.put('/contoh', (req, res) => {
-  res.send('request by PUT method');
-});
-
-// DELETE
-app.delete('/contoh', (req, res) => {
-  res.send('request by DELETE method');
-});
-
-// ALL (this method depending to what request that we use)
-app.all('/universal', (req, res) => {
-  res.send(`request by ${req.method} method`);
 });
 
 app.listen(port, () =>
