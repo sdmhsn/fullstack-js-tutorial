@@ -9,6 +9,10 @@ const log = (req, res, next) => {
 };
 app.use(log);
 
+// using body middleware (the body middleware should before app.use(routers) / routing declaration statements)
+app.use(express.urlencoded({ extended: true })); // parse x-www-form-url-encode
+app.use(express.json()); // parse JSON
+
 // routing declaration
 const routers = require('./routers');
 app.use(routers);
