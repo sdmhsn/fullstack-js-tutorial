@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+const path = require('path');
 
 // handling log middleware
 const log = (req, res, next) => {
@@ -12,6 +13,10 @@ app.use(log);
 // using body middleware (the body middleware should before app.use(routers) / routing declaration statements)
 app.use(express.urlencoded({ extended: true })); // parse x-www-form-url-encode
 app.use(express.json()); // parse JSON
+
+// accessing file in public directory
+// app.use(express.static(path.join(__dirname, 'public'))); http://localhost:3000/profile.pdf
+app.use('/public', express.static(path.join(__dirname, 'public'))); // routing as prefix (http://localhost:3000/public/profile.pdf)
 
 // routing declaration
 const routers = require('./routers');
