@@ -15,3 +15,15 @@ npm init
 ```sh
 npm install express
 ```
+
+3. Install Nodemon package:
+
+```sh
+npm install nodemon
+```
+
+4. Install Multer package:
+
+```sh
+npm install multer
+```
