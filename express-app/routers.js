@@ -16,18 +16,13 @@ routers.post('/login', (req, res) => {
   res.send(`Anda login dengan username ${username} dan password ${password}`);
 });
 
-routers.get('/download', (req, res) => {
+routers.get('/preview-image', (req, res) => {
   const filename = 'logo.png';
-  // Alternative 1:
-  // res.sendFile(path.join(__dirname, filename), {
-  //   headers: {
-  //     'Content-Disposition': 'attachment; filename="logo-utama1.png"',
-  //   },
-  // }); // to change the file name (logo.png) when we access /download in browser, after the automatically download the file is running
-
-  // Alternative 2:
-  // or using short command by res.download() method, to change the file name:
-  res.download(path.join(__dirname, filename), 'logo-utama123.png');
+  res.sendFile(path.join(__dirname, filename), {
+    headers: {
+      'Content-Type': 'image/png',
+    },
+  });
 });
 
 module.exports = routers;
