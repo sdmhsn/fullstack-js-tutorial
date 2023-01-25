@@ -19,11 +19,15 @@ routers.post('/login', (req, res) => {
 routers.get('/download', (req, res) => {
   const filename = 'logo.png';
   // Alternative 1:
-  // res.sendFile(__dirname + '/' + filename);
+  // res.sendFile(path.join(__dirname, filename), {
+  //   headers: {
+  //     'Content-Disposition': 'attachment; filename="logo-utama1.png"',
+  //   },
+  // }); // to change the file name (logo.png) when we access /download in browser, after the automatically download the file is running
+
   // Alternative 2:
-  // res.sendFile(path.resolve(__dirname, filename));
-  // Alternative 3:
-  res.sendFile(path.join(__dirname, filename));
+  // or using short command by res.download() method, to change the file name:
+  res.download(path.join(__dirname, filename), 'logo-utama123.png');
 });
 
 module.exports = routers;
