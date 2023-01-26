@@ -1,6 +1,8 @@
 const express = require('express');
 const routers = express.Router();
 const path = require('path');
+const multer = require('multer');
+const upload = multer({ dest: 'public/upload' }); // file upload destination
 
 routers.get('/', (req, res) => {
   res.send('Hello World!');
@@ -23,6 +25,11 @@ routers.get('/preview-image', (req, res) => {
       'Content-Type': 'image/png',
     },
   });
+});
+
+routers.post('/upload', upload.single('file'), (req, res) => {
+  // console.log(req.file);
+  res.send(req.file);
 });
 
 module.exports = routers;
