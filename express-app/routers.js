@@ -2,7 +2,6 @@ const express = require('express');
 const routers = express.Router();
 const path = require('path');
 const multer = require('multer');
-const upload = multer({ dest: 'public/upload' }); // file upload destination
 const fs = require('fs');
 
 routers.get('/', (req, res) => {
@@ -27,6 +26,15 @@ routers.get('/preview-image', (req, res) => {
     },
   });
 });
+
+const imageFilter = (req, file, cb) => {
+  if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
+    return cb(null, false);
+  }
+  cb(null, true);
+};
+
+const upload = multer({ dest: 'public/upload', fileFilter: imageFilter }); // file upload destination
 
 routers.post('/upload', upload.single('file'), (req, res) => {
   const file = req.file;
