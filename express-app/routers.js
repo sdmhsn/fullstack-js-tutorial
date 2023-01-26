@@ -50,4 +50,11 @@ routers.post('/upload', upload.single('file'), (req, res) => {
   }
 });
 
+routers.post('/register', upload.single('avatar'), (req, res) => {
+  const name = req.body.name; // capture the name form field (not nama)
+  const avatar = req.file; // capture the avatar for field. matching with upload.single('avatar') parameter
+
+  res.send({ nama: name, foto: avatar });
+});
+
 module.exports = routers;
