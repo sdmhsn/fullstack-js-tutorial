@@ -2,6 +2,17 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const path = require('path');
+const cors = require('cors');
+
+// handling cors
+// alternative 1
+// app.use(cors());
+
+// alternative 2 (to allow specific origin)
+const corsOptions = {
+  origin: 'http://example.com',
+};
+app.use(cors(corsOptions));
 
 // handling log middleware
 const log = (req, res, next) => {
