@@ -57,4 +57,10 @@ routers.post('/register', upload.single('avatar'), (req, res) => {
   res.send({ nama: name, foto: avatar });
 });
 
+routers.post('/photos/upload', upload.array('photos', 12), (req, res) => {
+  // upload.array('photos', 12) -> photos = form field name, 12 = max file value (more than 12 file will error)
+  const files = req.files;
+  res.send(files);
+});
+
 module.exports = routers;
