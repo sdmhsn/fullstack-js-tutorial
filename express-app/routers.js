@@ -63,4 +63,16 @@ routers.post('/photos/upload', upload.array('photos', 12), (req, res) => {
   res.send(files);
 });
 
+const cpuUpload = upload.fields([
+  { name: 'file1', maxCount: 1 },
+  { name: 'file2', maxCount: 4 },
+]);
+
+routers.post('/profile', cpuUpload, (req, res) => {
+  const files = req.files;
+
+  res.send(files);
+  res.end();
+});
+
 module.exports = routers;
