@@ -16,13 +16,13 @@ npm init
 npm install express
 ```
 
-3. Install Nodemon package:
+### 02b. Installing Nodemon Package
 
 ```sh
 npm install nodemon
 ```
 
-4. Install Multer package:
+### 02c. Installing Multer Package
 
 ```sh
 npm install multer
