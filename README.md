@@ -1,3 +1,1 @@
-# Mastering Fullstack JavaScript Tutorial
-
-This repository contains the course source code of Fullstack JavaScript Development
+## 03. ExpressJS and MongoDB Connection
