@@ -5,11 +5,6 @@ const MongoClient = require('mongodb').MongoClient;
 const connectionString =
   'mongodb://user_latihan:123456@localhost:27017?authSource=admin'; // mongodb://<user>:<password>@localhost:27017?authSource=admin
 
-MongoClient.connect(
-  connectionString,
-  { useUnifiedTopology: true },
-  (error, client) => {
-    if (error) return console.error('Connection failed!');
-    console.log('Server database connect!');
-  }
-);
+MongoClient.connect(connectionString, { useUnifiedTopology: true })
+  .then((res) => console.log('Server database connect!'))
+  .catch((err) => console.log('Connection failed!'));
