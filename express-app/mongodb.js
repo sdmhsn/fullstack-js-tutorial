@@ -7,10 +7,14 @@ const connectionString =
 
 (async () => {
   try {
-    let res = await MongoClient.connect(connectionString, {
+    const client = await MongoClient.connect(connectionString, {
       useUnifiedTopology: true,
     });
-    console.log('Server database connect!');
+    // console.log('Server database connect!');
+    const db = client.db('latihan'); // connect to any database command
+
+    const quotes = await db.collection('quotes').find().toArray(); // query code get quotes collection
+    console.log(quotes);
   } catch (error) {
     console.log('Connection failed!');
   }
