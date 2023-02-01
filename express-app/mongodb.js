@@ -16,7 +16,7 @@ const connectionString =
     const quotes = await db
       .collection('quotes')
       .find({
-        word: 'ora et labora',
+        word: /gitu/,
       })
       .toArray(); // query code to get quotes collection with any criteria
     console.log(quotes);
