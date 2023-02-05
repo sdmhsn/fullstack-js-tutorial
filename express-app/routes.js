@@ -58,4 +58,38 @@ routers.get('/product/:id', async (req, res) => {
   }
 });
 
+// post new product (Create):
+routers.post('/product', multer().none(), async (req, res) => {
+  // multer(): to handling request body from form-data
+  try {
+    const db = client.db('latihan');
+    const { name, price, stock, status } = req.body;
+    const product = await db.collection('products').insertOne({
+      name,
+      price,
+      stock,
+      status,
+    });
+
+    if (product.acknowledged) {
+      res.send({
+        status: 'success',
+        message: 'Added new product',
+        data: { _id: product.insertedId, ...req.body },
+      });
+    } else {
+      res.send({
+        status: 'warning',
+        message: 'Product added failed!',
+      });
+    }
+  } catch (error) {
+    res.status(404);
+    res.send({
+      status: 'error',
+      message: 'Database connection failed!', // or error.message
+    });
+  }
+});
+
 module.exports = routers;
