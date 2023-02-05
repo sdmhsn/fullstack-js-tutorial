@@ -168,4 +168,36 @@ routers.patch('/product/:id', async (req, res) => {
   }
 });
 
+// delete product (Delete):
+routers.delete('/product/:id', async (req, res) => {
+  try {
+    const db = client.db('latihan');
+    const id = req.params.id;
+    const objectId = new ObjectId.isValid(id) ? ObjectId(id) : id;
+    // const data = await db.collection('products').findOne({ _id: ObjectId(id) });
+    // console.log(data);
+    const product = await db.collection('products').deleteOne({
+      _id: objectId,
+    });
+
+    if (product.acknowledged) {
+      res.send({
+        status: 'success',
+        message: 'Deleted product',
+      });
+    } else {
+      res.send({
+        status: 'error',
+        message: 'Product deleted failed!',
+      });
+    }
+  } catch (error) {
+    res.status(404);
+    res.send({
+      status: 'error',
+      message: 'Database connection failed!',
+    });
+  }
+});
+
 module.exports = routers;
