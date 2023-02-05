@@ -28,4 +28,34 @@ routers.get('/products', async (req, res) => {
   }
 });
 
+// get single product (Read by id):
+routers.get('/product/:id', async (req, res) => {
+  try {
+    const db = client.db('latihan');
+    const id = req.params.id;
+    const objectId = ObjectId.isValid(id) ? ObjectId(id) : id; // id in : (else) === null
+    const product = await db.collection('products').findOne({
+      _id: objectId,
+    });
+
+    // console.log(product);
+
+    if (product) {
+      res.send({
+        status: 'success',
+        message: 'Single product',
+        data: product,
+      });
+    } else {
+      res.send('Product not found');
+    }
+  } catch (error) {
+    res.status(404);
+    res.send({
+      status: 'error',
+      message: 'Database connection failed!', // or error.message
+    });
+  }
+});
+
 module.exports = routers;
