@@ -133,4 +133,39 @@ routers.put('/product/:id', async (req, res) => {
   }
 });
 
+// patch product (Update):
+routers.patch('/product/:id', async (req, res) => {
+  try {
+    const db = client.db('latihan');
+    const id = req.params.id;
+    // console.log(req.body);
+    const objectId = ObjectId.isValid(id) ? ObjectId(id) : id; // id in : (else) === null
+    const product = await db.collection('products').updateOne(
+      { _id: objectId },
+      {
+        $set: req.body,
+      }
+    );
+
+    if (product.acknowledged) {
+      res.send({
+        status: 'success',
+        message: 'Updated product',
+        data: { _id: objectId, ...req.body },
+      });
+    } else {
+      res.send({
+        status: 'warning',
+        message: 'Product updated failed!',
+      });
+    }
+  } catch (error) {
+    res.status(404);
+    res.send({
+      status: 'error',
+      message: 'Database connection failed!',
+    });
+  }
+});
+
 module.exports = routers;
