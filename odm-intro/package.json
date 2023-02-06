@@ -10,5 +10,8 @@
     "expressjs"
   ],
   "author": "Saddam Husein",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^6.9.0"
+  }
 }
