@@ -11,3 +11,9 @@ npm install
 ```sh
 npm install mongodb
 ```
+
+### 03c. Installing Mongoose Package
+
+```sh
+ npm install mongoose
+```
