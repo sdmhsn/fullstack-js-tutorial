@@ -31,12 +31,19 @@ async function main() {
     // console.log(product);
 
     // Create data:
-    const product = await Product.create({
-      name: 'VGA ATI Radeon',
-      price: 1500000,
-      stock: 3,
-      status: true,
-    });
+    // const product = await Product.create({
+    //   name: 'VGA Nvidia',
+    //   price: 1500000,
+    //   stock: 3,
+    //   status: true,
+    // });
+    // console.log(product);
+
+    // Update data:
+    const product = await Product.updateOne(
+      { _id: '63df45936b10a351a0982f2f' },
+      { name: 'Computer Desk', price: 2000000 }
+    );
     console.log(product);
   } catch (error) {
     console.log(error); // e.g. error: wrong authentication
