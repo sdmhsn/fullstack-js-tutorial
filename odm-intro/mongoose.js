@@ -13,8 +13,8 @@ async function main() {
 
     // define a scheme
     const productSchema = new mongoose.Schema({
-      name: String,
-      price: Number,
+      name: { type: String, required: true },
+      price: { type: Number, required: true },
       stock: Number,
       status: { type: Boolean, default: true }, // default: true: set default value as true for status
     });
@@ -22,9 +22,13 @@ async function main() {
     // create a model
     const Product = mongoose.model('Product', productSchema); // 'Product': collection in mongodb. Automatically plural and lowercased in mongodb. e.g. Product to products
 
-    // create a document using query
-    const newProduct = await Product.create({}); // without any field (blank). the document still created with _id and default status fields.
-    console.log(newProduct);
+    try {
+      // create a document using query
+      const newProduct = await Product.create({}); // without any field (blank). the document still created with _id and default status fields.
+      console.log(newProduct);
+    } catch (error) {
+      console.log(error.message);
+    }
   } catch (error) {
     console.log(error.message); // e.g. error: wrong authentication
   }
