@@ -27,7 +27,16 @@ async function main() {
     // console.log(products);
 
     // Read data by id:
-    const product = await Product.findOne({ _id: '63df45936b10a351a0982f2f' });
+    // const product = await Product.findOne({ _id: '63df45936b10a351a0982f2f' });
+    // console.log(product);
+
+    // Create data:
+    const product = await Product.create({
+      name: 'VGA ATI Radeon',
+      price: 1500000,
+      stock: 3,
+      status: true,
+    });
     console.log(product);
   } catch (error) {
     console.log(error); // e.g. error: wrong authentication
