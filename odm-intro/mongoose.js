@@ -12,23 +12,19 @@ async function main() {
     );
 
     // define a scheme
-    const quoteSchema = new mongoose.Schema({
-      word: String,
+    const productSchema = new mongoose.Schema({
+      name: String,
+      price: Number,
+      stock: Number,
+      status: { type: Boolean, default: true }, // default: true: set default value as true for status
     });
 
     // create a model
-    const Quote = mongoose.model('Quote', quoteSchema); // 'Quote': collection in mongodb. Automatically plural and lowercased in mongodb. e.g. Quote to quotes
+    const Product = mongoose.model('Product', productSchema); // 'Product': collection in mongodb. Automatically plural and lowercased in mongodb. e.g. Product to products
 
-    // create a new document
-    const quote = new Quote({
-      word: 'Man behind the gun',
-    });
-
-    // save a created document
-    quote.save((error, quote) => {
-      if (error) return console.error(error); // e.g. error: { _id: false } in define a schema. source: option: _id in https://mongoosejs.com/docs/guide.html#_id
-      console.log(quote);
-    });
+    // Read all data:
+    const products = await Product.find();
+    console.log(products);
   } catch (error) {
     console.log(error); // e.g. error: wrong authentication
   }
