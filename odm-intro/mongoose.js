@@ -23,8 +23,12 @@ async function main() {
     const Product = mongoose.model('Product', productSchema); // 'Product': collection in mongodb. Automatically plural and lowercased in mongodb. e.g. Product to products
 
     // Read all data:
-    const products = await Product.find();
-    console.log(products);
+    // const products = await Product.find();
+    // console.log(products);
+
+    // Read data by id:
+    const product = await Product.findOne({ _id: '63df45936b10a351a0982f2f' });
+    console.log(product);
   } catch (error) {
     console.log(error); // e.g. error: wrong authentication
   }
