@@ -24,10 +24,17 @@ async function main() {
 
     try {
       // create a document using query
-      const newProduct = await Product.create({}); // without any field (blank). the document still created with _id and default status fields.
+      const newProduct = await Product.create({});
       console.log(newProduct);
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.errors['name'].message);
+
+      const error_name = error.errors['name'] && error.errors['name'].message;
+      if (error_name) console.log(error_name);
+
+      const error_price =
+        error.errors['price'] && error.errors['price'].message;
+      if (error_price) console.log(error_price);
     }
   } catch (error) {
     console.log(error.message); // e.g. error: wrong authentication
