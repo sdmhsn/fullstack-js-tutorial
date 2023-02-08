@@ -40,10 +40,16 @@ async function main() {
     // console.log(product);
 
     // Update data:
-    const product = await Product.updateOne(
-      { _id: '63df45936b10a351a0982f2f' },
-      { name: 'Computer Desk', price: 2000000 }
-    );
+    // const product = await Product.updateOne(
+    //   { _id: '63df45936b10a351a0982f2f' },
+    //   { name: 'Computer Desk', price: 2000000 }
+    // );
+    // console.log(product);
+
+    // Delete data:
+    const product = await Product.deleteOne({
+      _id: '63e33d4b58a5fe9fdaa28580',
+    });
     console.log(product);
   } catch (error) {
     console.log(error); // e.g. error: wrong authentication
