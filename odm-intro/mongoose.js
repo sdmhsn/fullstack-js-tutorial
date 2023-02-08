@@ -13,8 +13,8 @@ async function main() {
 
     // define a scheme
     const productSchema = new mongoose.Schema({
-      name: { type: String, required: true },
-      price: { type: Number, required: true },
+      name: { type: String, required: [true, 'Field name wajib!'] },
+      price: { type: Number, required: [true, 'Field price wajib!'] },
       stock: Number,
       status: { type: Boolean, default: true }, // default: true: set default value as true for status
     });
