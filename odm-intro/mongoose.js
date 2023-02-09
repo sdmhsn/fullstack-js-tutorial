@@ -24,6 +24,8 @@ async function main() {
 
     // queries
     const query = Product.find(); // find all documents
+    // queries: where() method
+    query.where({ stock: { $lte: 2 } }); // get specific documents by stock field. lte: lower than equal
 
     const productResult = await query.exec();
     console.log(productResult);
