@@ -15,13 +15,12 @@ async function main() {
     const productSchema = new mongoose.Schema(
       // Built-in Validators source: https://mongoosejs.com/docs/validation.html#built-in-validators
       {
-        name: { type: String, required: true, minLength: 3, maxLength: 5 },
-        price: {
-          type: Number,
+        name: {
+          type: String,
           required: true,
-          min: [3, 'angka kurang dari 3'],
-          max: 5,
+          enum: ['CPU', 'PC', 'Processor'],
         },
+        price: { type: Number, required: true },
         stock: Number,
         status: { type: Boolean, default: true }, // default: true: set default value as true for status
       }
@@ -33,8 +32,8 @@ async function main() {
     try {
       // create a document using query
       const newProduct = await Product.create({
-        name: 'PC',
-        price: 0.1,
+        name: 'RAM',
+        price: 200000,
       });
       console.log(newProduct);
     } catch (error) {
