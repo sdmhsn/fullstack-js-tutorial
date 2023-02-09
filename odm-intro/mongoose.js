@@ -12,38 +12,38 @@ async function main() {
     );
 
     // define a scheme
-    const productSchema = new mongoose.Schema(
-      // Built-in Validators source: https://mongoosejs.com/docs/validation.html#built-in-validators
+    const userSchema = new mongoose.Schema(
+      // Built-in Validators source: https://mongoosejs.com/docs/validation.html#custom-validators
       {
-        name: {
+        username: {
           type: String,
-          unique: true,
         },
-        price: Number,
-        stock: Number,
-        status: { type: Boolean, default: true }, // default: true: set default value as true for status
+        email: {
+          type: String,
+          validate: {
+            validator: function (v) {
+              return /^\S+@\S+$/.test(v);
+            },
+            message: (props) => `${props.value} is not a valid email!`,
+          },
+        },
+        password: String,
       }
     );
 
     // create a model
-    const Product = mongoose.model('Products2', productSchema); // change to products2 collection
+    const User = mongoose.model('User', userSchema);
 
     try {
       // create a document using query
-      const newProduct = await Product.create({
-        name: 'RAM',
-        price: 200000,
+      const newUser = await User.create({
+        username: 'john',
+        email: 'john.gmail.com', // invalid email. should use @
+        password: '123456',
       });
-      console.log(newProduct);
+      console.log(newUser);
     } catch (error) {
-      // console.log(error.errors['name'].message);
-
-      const error_name = error.errors['name'] && error.errors['name'].message;
-      if (error_name) console.log(error_name);
-
-      const error_price =
-        error.errors['price'] && error.errors['price'].message;
-      if (error_price) console.log(error_price);
+      console.log(error.message);
     }
   } catch (error) {
     console.log(error.message); // e.g. error: wrong authentication
