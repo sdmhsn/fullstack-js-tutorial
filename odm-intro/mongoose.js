@@ -18,7 +18,10 @@ async function main() {
         name: {
           type: String,
           required: true,
-          enum: ['CPU', 'PC', 'Processor'],
+          enum: {
+            values: ['CPU', 'PC', 'Processor'],
+            message: '{VALUE} tidak didukung!',
+          },
         },
         price: { type: Number, required: true },
         stock: Number,
