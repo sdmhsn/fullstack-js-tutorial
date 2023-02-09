@@ -17,20 +17,16 @@ async function main() {
       {
         name: {
           type: String,
-          required: true,
-          enum: {
-            values: ['CPU', 'PC', 'Processor'],
-            message: '{VALUE} tidak didukung!',
-          },
+          unique: true,
         },
-        price: { type: Number, required: true },
+        price: Number,
         stock: Number,
         status: { type: Boolean, default: true }, // default: true: set default value as true for status
       }
     );
 
     // create a model
-    const Product = mongoose.model('Product', productSchema); // 'Product': collection in mongodb. Automatically plural and lowercased in mongodb. e.g. Product to products
+    const Product = mongoose.model('Products2', productSchema); // change to products2 collection
 
     try {
       // create a document using query
