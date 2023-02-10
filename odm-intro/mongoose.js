@@ -25,13 +25,13 @@ async function main() {
     // queries
     const query = Product.find(); // find all documents
     // queries: where() method
-    // query.where({ stock: { $lte: 2 } }); // get specific documents by stock field. lte: lower than equal
+    query.where({ stock: { $lte: 2 } }); // get specific documents by stock field. lte: lower than equal
 
     // queries: select() method
-    // query.select('name stock'); // specifies which document fields (name and stock fields)
+    query.select('name stock'); // specifies which document fields (name and stock fields)
 
     // queries: limit() method
-    // query.limit(3); // Specifies the first maximum number of documents
+    query.limit(3); // Specifies the first maximum number of documents
 
     // queries: sort() method
     query.sort({ stock: -1 }); // sort by stock field by descending (-1: greater to lower)
