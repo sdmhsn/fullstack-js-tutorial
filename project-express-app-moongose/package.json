@@ -1,0 +1,21 @@
+{
+  "name": "project-express-app-moongose",
+  "version": "1.0.0",
+  "description": "App base on ExpressJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "expressjs"
+  ],
+  "author": "Saddam Husein",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongodb": "^4.13.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^2.0.20",
+    "mongoose": "^6.9.0"
+  }
+}
