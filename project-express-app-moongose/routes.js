@@ -106,4 +106,40 @@ routers.put('/product/:id', multer().none(), async (req, res) => {
   }
 });
 
+// patch product (Update):
+routers.patch('/product/:id', async (req, res) => {
+  try {
+    const { name, price, stock, status } = req.body;
+    const id = req.params.id;
+
+    const product = await Product.updateOne(
+      { _id: id },
+      { name, price, stock, status },
+      {
+        runValidators: true,
+      }
+    );
+
+    // console.log(product);
+
+    if (product.matchedCount === 1) {
+      res.send({
+        status: 'success',
+        message: 'Updated product',
+        data: { _id: id, ...req.body },
+      });
+    } else {
+      res.send({
+        status: 'warning',
+        message: 'Product updated failed :D :D!',
+      });
+    }
+  } catch (error) {
+    res.send({
+      status: 'error',
+      message: error.message,
+    });
+  }
+});
+
 module.exports = routers;
