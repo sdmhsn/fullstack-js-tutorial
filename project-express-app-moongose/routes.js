@@ -142,4 +142,26 @@ routers.patch('/product/:id', async (req, res) => {
   }
 });
 
+// delete product (Delete):
+routers.delete('/product/:id', async (req, res) => {
+  const id = req.params.id;
+  const product = await Product.deleteOne({
+    _id: id,
+  });
+
+  // console.log(product);
+
+  if (product.deletedCount === 1) {
+    res.send({
+      status: 'success',
+      message: 'Deleted product',
+    });
+  } else {
+    res.send({
+      status: 'warning',
+      message: 'Product deleted failed! :)',
+    });
+  }
+});
+
 module.exports = routers;
