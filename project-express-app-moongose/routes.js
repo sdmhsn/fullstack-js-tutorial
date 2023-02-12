@@ -21,4 +21,23 @@ routers.get('/products', async (req, res) => {
   }
 });
 
+// get single product (Read by id):
+routers.get('/product/:id', async (req, res) => {
+  const id = req.params.id;
+  const product = await Product.findById(id);
+
+  if (product) {
+    res.send({
+      status: 'success',
+      message: 'Single product found',
+      data: product,
+    });
+  } else {
+    res.send({
+      status: 'warning',
+      message: 'Product not found! :)',
+    });
+  }
+});
+
 module.exports = routers;
