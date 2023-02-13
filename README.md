@@ -1,3 +1,7 @@
-# Mastering Fullstack JavaScript Tutorial
+## 04. ReactJS and ExpressJS Connection
 
-This repository contains the course source code of Fullstack JavaScript Development
+### 04a. Creating Project App Using CRA
+
+```sh
+npx create-react-app react-express-app
+```
