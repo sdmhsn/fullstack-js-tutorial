@@ -5,3 +5,10 @@
 ```sh
 npx create-react-app react-express-app
 ```
+
+### 04b. Starting Project App
+
+```sh
+cd react-express-app
+npm run start
+```
