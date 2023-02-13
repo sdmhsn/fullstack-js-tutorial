@@ -18,3 +18,9 @@ npm run start
 ```sh
 npm install react-router-dom
 ```
+
+### 04d. Installing Axios Package
+
+```sh
+npm install axios
+```
