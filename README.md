@@ -12,3 +12,9 @@ npx create-react-app react-express-app
 cd react-express-app
 npm run start
 ```
+
+### 04c. Installing React Router Package
+
+```sh
+npm install react-router-dom
+```
