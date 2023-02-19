@@ -30,6 +30,17 @@ const List = () => {
   return (
     <>
       <h2>Products List Page</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
     </>
   );
 };
