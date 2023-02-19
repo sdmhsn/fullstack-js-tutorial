@@ -1,7 +1,8 @@
 import React from 'react';
-import { Routes, NavLink } from 'react-router-dom';
+import { Routes, Route, NavLink } from 'react-router-dom';
 
 import './App.css';
+import routes from './routes';
 
 function App() {
   return (
@@ -29,7 +30,13 @@ function App() {
 
       {/* Main */}
       <div className="main">
-        <Routes></Routes>
+        <Routes>
+          {routes.map((route, i) => {
+            // console.log(route);
+            const { path, Component } = route;
+            return <Route key={i} path={path} element={<Component />} />;
+          })}
+        </Routes>
       </div>
     </div>
   );
