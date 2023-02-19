@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Routes, NavLink } from 'react-router-dom';
 
 import './App.css';
 
@@ -28,6 +28,9 @@ function App() {
       </ul>
 
       {/* Main */}
+      <div className="main">
+        <Routes></Routes>
+      </div>
     </div>
   );
 }
