@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 
 const List = () => {
+  const [products, setProducts] = React.useState([]);
+
   React.useEffect(() => {
     const getProducts = async () => {
       try {
@@ -12,7 +14,8 @@ const List = () => {
 
         // handle data list product
         if (status === 'success') {
-          console.log(data);
+          // console.log(data);
+          setProducts(data);
         } else {
           throw Error(message);
         }
