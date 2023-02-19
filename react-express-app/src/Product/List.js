@@ -39,7 +39,17 @@ const List = () => {
             <th>Stock</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          {products &&
+            products.map((product, index) => (
+              <tr key={product._id}>
+                {/* preferred using product id for key value instead using index parameter in map() */}
+                <td>{product.name}</td>
+                <td className="center">{product.price}</td>
+                <td className="center">{product.stock}</td>
+              </tr>
+            ))}
+        </tbody>
       </table>
     </>
   );
