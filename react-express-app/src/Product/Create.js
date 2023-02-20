@@ -72,6 +72,7 @@ const Create = () => {
             id="on"
             onChange={handleInputChange}
             value={true}
+            checked={product.status === true}
           />
           <label htmlFor="on">On</label>
           <input
@@ -80,6 +81,7 @@ const Create = () => {
             id="off"
             onChange={handleInputChange}
             value={false}
+            checked={product.status === false}
           />
           <label htmlFor="off">Off</label>
         </div>
