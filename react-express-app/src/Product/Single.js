@@ -1,10 +1,11 @@
 import React from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const Single = () => {
   const [product, setProduct] = React.useState({});
   const { productId } = useParams(); // productId: related to /products/single/:productId path in routes
+  const navigate = useNavigate(); // use useNavigate() in v6 instead of useHistory() in v5.
 
   React.useEffect(() => {
     const getProduct = async () => {
@@ -45,6 +46,7 @@ const Single = () => {
           <div>Status: {product.status ? 'on' : 'off'}</div>
         </>
       )}
+      <button onClick={() => navigate('/products')}>&laquo; Back</button>
     </>
   );
 };
