@@ -26,7 +26,7 @@ const Single = () => {
     };
 
     getProduct();
-  }, []);
+  }, [productId]);
 
   return (
     <>
