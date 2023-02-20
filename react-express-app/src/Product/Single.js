@@ -31,11 +31,20 @@ const Single = () => {
   }, [productId]);
 
   // console.log(productId);
-  console.log(product);
+  // console.log(product);
 
   return (
     <>
       <h2>Single Product Page</h2>
+
+      {product && (
+        <>
+          <div>Name: {product.name}</div>
+          <div>Price: {product.price}</div>
+          <div>Stock: {product.stock}</div>
+          <div>Status: {product.status ? 'on' : 'off'}</div>
+        </>
+      )}
     </>
   );
 };
