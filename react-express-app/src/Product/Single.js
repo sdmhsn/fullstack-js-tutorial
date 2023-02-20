@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 const Single = () => {
+  const [product, setProduct] = React.useState({});
   const { productId } = useParams(); // productId: related to /products/single/:productId path in routes
 
   React.useEffect(() => {
@@ -16,7 +17,8 @@ const Single = () => {
         const { status, message, data } = response.data; // response.data: .data is axios property, not the 'data' key from backend
 
         if (status === 'success') {
-          console.log(data); // data 'key' from backend
+          // console.log(data); // data 'key' from backend
+          setProduct(data);
         } else {
           throw Error(message);
         }
@@ -27,6 +29,9 @@ const Single = () => {
 
     getProduct();
   }, [productId]);
+
+  // console.log(productId);
+  console.log(product);
 
   return (
     <>
