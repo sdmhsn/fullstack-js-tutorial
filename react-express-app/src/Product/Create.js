@@ -9,7 +9,13 @@ const Create = () => {
   });
 
   const handleInputChange = (event) => {
-    if (event.target.type === 'number') {
+    if (event.target.name === 'status') {
+      // target by name. for status (radio) input field
+      setProduct({
+        ...product,
+        [event.target.name]: event.target.value === 'true' ? true : false, // status value output from radio  is 'true' (string not boolean). this command convert the 'true' value into boolean
+      });
+    } else if (event.target.type === 'number') {
       // target by type. for price and stock (number) input fields
       setProduct({
         ...product,
@@ -65,6 +71,7 @@ const Create = () => {
             name="status"
             id="on"
             onChange={handleInputChange}
+            value={true}
           />
           <label htmlFor="on">On</label>
           <input
@@ -72,6 +79,7 @@ const Create = () => {
             name="status"
             id="off"
             onChange={handleInputChange}
+            value={false}
           />
           <label htmlFor="off">Off</label>
         </div>
