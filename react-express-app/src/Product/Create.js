@@ -3,12 +3,28 @@ import React from 'react';
 const Create = () => {
   const [product, setProduct] = React.useState({
     name: '',
-    price: 0,
-    stock: 0,
+    price: '',
+    stock: '',
     status: false, // default chacked off
   });
 
-  const handleInputChange = (event) => {};
+  const handleInputChange = (event) => {
+    if (event.target.type === 'number') {
+      // target by type. for price and stock (number) input fields
+      setProduct({
+        ...product,
+        [event.target.name]: Number(event.target.value), // price and stock output values from input number fields are string not number. this command convert the string value into number
+      });
+    } else {
+      // for name (text) input field
+      setProduct({
+        ...product,
+        [event.target.name]: event.target.value,
+      });
+    }
+  };
+
+  console.log(product);
 
   return (
     <>
@@ -21,6 +37,7 @@ const Create = () => {
           id="product_name"
           name="name"
           onChange={handleInputChange}
+          value={product.name}
         />
 
         <label htmlFor="product_price">Price:</label>
@@ -29,6 +46,7 @@ const Create = () => {
           id="product_price"
           name="price"
           onChange={handleInputChange}
+          value={product.price}
         />
 
         <label htmlFor="product_stock">Stock:</label>
@@ -37,6 +55,7 @@ const Create = () => {
           id="product_stock"
           name="stock"
           onChange={handleInputChange}
+          value={product.stock}
         />
 
         <label>Status:</label>
