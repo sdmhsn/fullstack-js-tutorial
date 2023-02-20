@@ -5,6 +5,29 @@ import { useParams } from 'react-router-dom';
 const Single = () => {
   const { productId } = useParams(); // productId: related to /products/single/:productId path in routes
 
+  React.useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3000/product/${productId}`
+        );
+        // console.log(response.data);
+
+        const { status, message, data } = response.data; // response.data: .data is axios property, not the 'data' key from backend
+
+        if (status === 'success') {
+          console.log(data); // data 'key' from backend
+        } else {
+          throw Error(message);
+        }
+      } catch (error) {
+        alert(error.message);
+      }
+    };
+
+    getProduct();
+  }, []);
+
   return (
     <>
       <h2>Single Product Page</h2>
