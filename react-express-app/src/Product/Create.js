@@ -30,13 +30,17 @@ const Create = () => {
     }
   };
 
-  console.log(product);
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+
+    console.log(product);
+  };
 
   return (
     <>
       <h2>Create Product Form Page</h2>
 
-      <form>
+      <form onSubmit={handleFormSubmit}>
         <label htmlFor="product_name">Name:</label>
         <input
           type="text"
