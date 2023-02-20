@@ -32,6 +32,7 @@ const List = () => {
     <>
       <h2>Products List Page</h2>
 
+      <Link to={'/products/create'}>+ CREATE</Link>
       <table>
         <thead>
           <tr>
