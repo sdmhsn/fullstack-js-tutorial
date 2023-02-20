@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const List = () => {
   const [products, setProducts] = React.useState([]);
@@ -46,7 +47,11 @@ const List = () => {
               <tr key={product._id}>
                 {/* preferred using product id for key value instead using index parameter in map() */}
                 <td className="no">{index + 1}</td>
-                <td>{product.name}</td>
+                <td>
+                  <Link to={`/products/single/${product._id}`}>
+                    {product.name}
+                  </Link>
+                </td>
                 <td className="center">{product.price}</td>
                 <td className="center">{product.stock}</td>
               </tr>
