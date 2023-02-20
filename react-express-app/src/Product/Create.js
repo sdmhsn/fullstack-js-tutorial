@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Create = () => {
   const [product, setProduct] = React.useState({
@@ -8,6 +9,7 @@ const Create = () => {
     stock: '',
     status: false, // default chacked off
   });
+  const navigate = useNavigate();
 
   const handleInputChange = (event) => {
     if (event.target.name === 'status') {
@@ -53,6 +55,7 @@ const Create = () => {
 
       if (status === 'success') {
         alert(message);
+        navigate('/products');
       } else {
         throw Error(message);
       }
