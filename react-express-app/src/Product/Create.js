@@ -31,10 +31,34 @@ const Create = () => {
     }
   };
 
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    console.log(product);
+    // console.log(product);
+
+    try {
+      const response = await axios.post(
+        'http://localhost:3000/product',
+        product,
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        }
+      );
+
+      // console.log(response.data);
+
+      const { status, message } = response.data;
+
+      if (status === 'success') {
+        alert(message);
+      } else {
+        throw Error(message);
+      }
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   return (
