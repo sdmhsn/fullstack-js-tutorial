@@ -118,6 +118,8 @@ const Create = () => {
           <label htmlFor="off">Off</label>
         </div>
 
+        <button onClick={() => navigate('/products')}>&laquo; Back</button>
+
         <button>Submit</button>
       </form>
     </>
