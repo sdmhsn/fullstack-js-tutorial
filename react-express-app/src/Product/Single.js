@@ -42,6 +42,7 @@ const Single = () => {
 
         if (status === 'success') {
           alert(message);
+          navigate('/products');
         } else {
           throw Error(message);
         }
