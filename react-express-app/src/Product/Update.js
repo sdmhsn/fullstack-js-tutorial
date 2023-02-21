@@ -34,7 +34,7 @@ const Update = () => {
     };
 
     getProduct();
-  }, []);
+  }, [productId]);
 
   const handleInputChange = (event) => {
     if (event.target.name === 'status') {
