@@ -5,7 +5,7 @@ const Update = () => {
     name: '',
     price: '',
     stock: '',
-    status: true,
+    status: false,
   }); // controlled component, each input form should filled with its own value. properties required inside state.
 
   const handleInputChange = (event) => {
@@ -72,6 +72,7 @@ const Update = () => {
             id="on"
             onChange={handleInputChange}
             value={true}
+            checked={product.status === true}
           />
           <label htmlFor="on">On</label>
           <input
@@ -80,6 +81,7 @@ const Update = () => {
             id="off"
             onChange={handleInputChange}
             value={false}
+            checked={product.status === false}
           />
           <label htmlFor="off">Off</label>
         </div>
