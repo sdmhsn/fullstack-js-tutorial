@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const Update = () => {
   const [product, setProduct] = React.useState({
@@ -10,6 +10,7 @@ const Update = () => {
     status: false,
   }); // controlled component, each input form should filled with its own value. properties required inside state.
   const { productId } = useParams(); // productId: related to /products/single/:productId path in routes
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     const getProduct = async () => {
@@ -75,6 +76,7 @@ const Update = () => {
 
       if (status === 'success') {
         alert(message);
+        navigate('/products');
       } else {
         alert(message);
       }
