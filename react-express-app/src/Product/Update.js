@@ -1,7 +1,16 @@
 import React from 'react';
 
 const Update = () => {
+  const [product, setProduct] = React.useState({
+    name: '',
+    price: '',
+    stock: '',
+    status: true,
+  }); // controlled component, each input form should filled with its own value. properties required inside state.
+
   const handleInputChange = (event) => {};
+
+  console.log(product);
 
   return (
     <>
