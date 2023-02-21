@@ -28,7 +28,27 @@ const List = () => {
     getProducts();
   }, []); // no dependency required
 
-  const handleDeleteProduct = () => {};
+  const handleDeleteProduct = async (id) => {
+    if (window.confirm('Delete this product?')) {
+      try {
+        const response = await axios.delete(
+          `http://localhost:3000/product/${id}`
+        );
+
+        const { status, message } = response.data;
+
+        if (status === 'success') {
+          alert(message); // the alert or the other functions being called twice because the root component (<App />) in index.js, is wrap by <React.StrictMode>
+        } else {
+          throw Error(message);
+        }
+      } catch (error) {
+        alert(error.message);
+      }
+    } else {
+      alert('Delete product pending');
+    }
+  };
 
   return (
     <>
@@ -59,8 +79,10 @@ const List = () => {
                 <td className="center">{product.price}</td>
                 <td className="center">{product.stock}</td>
                 <td className="center">
-                  <Link to={`/products/update/${product._id}`}>Update</Link> |
-                  <Link onClick={handleDeleteProduct}> Delete</Link>
+                  <Link to={`/products/update/${product._id}`}>Update</Link> |{' '}
+                  <Link onClick={() => handleDeleteProduct(product._id)}>
+                    Delete
+                  </Link>
                 </td>
               </tr>
             ))}
