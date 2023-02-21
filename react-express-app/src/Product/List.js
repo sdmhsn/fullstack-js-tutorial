@@ -28,6 +28,8 @@ const List = () => {
     getProducts();
   }, []); // no dependency required
 
+  const handleDeleteProduct = () => {};
+
   return (
     <>
       <h2>Products List Page</h2>
@@ -57,7 +59,8 @@ const List = () => {
                 <td className="center">{product.price}</td>
                 <td className="center">{product.stock}</td>
                 <td className="center">
-                  <Link to={`/products/update/${product._id}`}>Update</Link>
+                  <Link to={`/products/update/${product._id}`}>Update</Link> |
+                  <Link onClick={handleDeleteProduct}> Delete</Link>
                 </td>
               </tr>
             ))}
