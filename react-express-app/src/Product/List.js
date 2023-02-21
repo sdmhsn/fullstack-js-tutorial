@@ -40,6 +40,7 @@ const List = () => {
             <th>Name</th>
             <th>Price</th>
             <th>Stock</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -55,6 +56,9 @@ const List = () => {
                 </td>
                 <td className="center">{product.price}</td>
                 <td className="center">{product.stock}</td>
+                <td className="center">
+                  <Link to={`/products/update/${product._id}`}>Update</Link>
+                </td>
               </tr>
             ))}
         </tbody>
