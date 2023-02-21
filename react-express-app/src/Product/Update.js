@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 const Update = () => {
   const [product, setProduct] = React.useState({
