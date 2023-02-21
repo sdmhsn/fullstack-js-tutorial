@@ -32,20 +32,24 @@ const Single = () => {
   }, [productId]);
 
   const handleDeleteProduct = async () => {
-    try {
-      const response = await axios.delete(
-        `http://localhost:3000/product/${productId}`
-      );
+    if (window.confirm('Delete this product?')) {
+      try {
+        const response = await axios.delete(
+          `http://localhost:3000/product/${productId}`
+        );
 
-      const { status, message } = response.data;
+        const { status, message } = response.data;
 
-      if (status === 'success') {
-        alert(message);
-      } else {
-        throw Error(message);
+        if (status === 'success') {
+          alert(message);
+        } else {
+          throw Error(message);
+        }
+      } catch (error) {
+        alert(error.message);
       }
-    } catch (error) {
-      alert(error.message);
+    } else {
+      alert('Delete product pending');
     }
   };
 
