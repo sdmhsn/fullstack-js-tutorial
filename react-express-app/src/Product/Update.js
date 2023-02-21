@@ -81,7 +81,7 @@ const Update = () => {
         alert(message);
       }
     } catch (error) {
-      alert(error);
+      alert(error.message);
     }
   };
 
@@ -138,6 +138,8 @@ const Update = () => {
           />
           <label htmlFor="off">Off</label>
         </div>
+
+        <button onClick={() => navigate('/products')}>&laquo; Back</button>
 
         <button>Submit</button>
       </form>
