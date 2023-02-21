@@ -37,7 +37,7 @@ const Update = () => {
     getProduct();
   }, [productId]);
 
-  const handleInputChange = (event) => {
+  const handleInputChange = async (event) => {
     if (event.target.name === 'status') {
       // target by name. for status (radio) input field
       setProduct({
@@ -59,10 +59,28 @@ const Update = () => {
     }
   };
 
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    console.log(product);
+    // console.log(product);
+    try {
+      const response = await axios.put(
+        `http://localhost:3000/product/${productId}`,
+        product
+      );
+
+      // console.log(response.data);
+
+      const { status, message } = response.data;
+
+      if (status === 'success') {
+        alert(message);
+      } else {
+        alert(message);
+      }
+    } catch (error) {
+      alert(error);
+    }
   };
 
   return (
