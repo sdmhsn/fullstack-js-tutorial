@@ -24,7 +24,8 @@ const Update = () => {
         const { status, message, data } = response.data; // response.data: .data is axios property, not the 'data' key from backend
 
         if (status === 'success') {
-          console.log(data); // data 'key' from backend
+          // console.log(data); // data 'key' from backend
+          setProduct(data);
         } else {
           throw Error(message);
         }
