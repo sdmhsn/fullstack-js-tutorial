@@ -1,9 +1,10 @@
 import React from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const List = () => {
   const [products, setProducts] = React.useState([]);
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     const getProducts = async () => {
@@ -39,6 +40,9 @@ const List = () => {
 
         if (status === 'success') {
           alert(message); // the alert or the other functions being called twice because the root component (<App />) in index.js, is wrap by <React.StrictMode>
+          navigate(0); // reload same page works!
+          // return redirect('/products'); // using redirect() to reload same page failed
+          // return <Navigate to="/products" replace />; // using <Navigate /> to reload same page failed
         } else {
           throw Error(message);
         }
