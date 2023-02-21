@@ -11,6 +11,31 @@ const Update = () => {
   }); // controlled component, each input form should filled with its own value. properties required inside state.
   const { productId } = useParams(); // productId: related to /products/single/:productId path in routes
 
+  React.useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3000/product/${productId}`
+        );
+
+        // console.log(response);
+        // console.log(response.data);
+
+        const { status, message, data } = response.data; // response.data: .data is axios property, not the 'data' key from backend
+
+        if (status === 'success') {
+          console.log(data); // data 'key' from backend
+        } else {
+          throw Error(message);
+        }
+      } catch (error) {
+        alert(error.message);
+      }
+    };
+
+    getProduct();
+  }, []);
+
   const handleInputChange = (event) => {
     if (event.target.name === 'status') {
       // target by name. for status (radio) input field
