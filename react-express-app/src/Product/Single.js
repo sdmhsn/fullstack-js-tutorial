@@ -31,6 +31,8 @@ const Single = () => {
     getProduct();
   }, [productId]);
 
+  const handleDeleteProduct = () => {};
+
   // console.log(productId);
   // console.log(product);
 
@@ -47,6 +49,8 @@ const Single = () => {
         </>
       )}
       <button onClick={() => navigate('/products')}>&laquo; Back</button>
+
+      <button onClick={handleDeleteProduct}>Delete</button>
     </>
   );
 };
