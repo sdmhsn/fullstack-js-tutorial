@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 const Update = () => {
   const [product, setProduct] = React.useState({
@@ -8,6 +9,7 @@ const Update = () => {
     stock: '',
     status: false,
   }); // controlled component, each input form should filled with its own value. properties required inside state.
+  const { productId } = useParams(); // productId: related to /products/single/:productId path in routes
 
   const handleInputChange = (event) => {
     if (event.target.name === 'status') {
