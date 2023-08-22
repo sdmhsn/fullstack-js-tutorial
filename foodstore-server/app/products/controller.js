@@ -212,7 +212,8 @@ const store = async (req, res, next) => {
       let criteria = {};
 
       if (q.length) {
-        criteria = { ...criteria, name: { $regex: q, $options: 'i' } };
+        // criteria = { ...criteria, name: { $regex: q, $options: 'i' } }; // this also works
+        criteria = { ...criteria, name: { $regex: `${q}`, $options: 'i' } };
       }
 
       if (category.length) {
@@ -228,7 +229,7 @@ const store = async (req, res, next) => {
       if (tags.length) {
         const dataTags = tags.map((tag) => new RegExp(tag, 'i')); // case insensitive with regex. e.g. [ /foods/i, /drinks/i ]
 
-        console.log(dataTags);
+        console.log(dataTags); // [ /bread/i, /cheese/i, etc... ]
         tags = await Tag.find({ name: { $in: dataTags } });
 
         criteria = { ...criteria, tags: { $in: tags.map((tag) => tag._id) } };
@@ -259,8 +260,13 @@ const store = async (req, res, next) => {
         return res.json({
           status: 'warning',
           message: 'Products empty! :)',
+          count,
+          data: products, // experiment sendiri. []: array kosong artinya data tidak terdapat dalam db. output array kosong agar tidak error saat diproses disisi react-frontend (/Home/index.js). jika bukan array kosong ([]), output akan bernilai undefined sehingga dapat mengalami error.
         });
       }
+
+      // console.log(products);
+      // return res.json({ data: products, count }); // sesuai ebook, ini juga akan menghasilkan array kosong ([]) apabila data tidak ditemukan dalam db. yang menjadi pembeda adalah output products tidak menggunakan kondisi pengecekan panjang products (if (products.length > 0))
     } catch (error) {
       next(error);
     }
