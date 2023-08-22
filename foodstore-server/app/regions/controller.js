@@ -18,11 +18,13 @@ const getProvince = async (req, res, next) => {
 
 // kabupaten
 const getRegency = async (req, res, next) => {
+  const db_regency = path.resolve(__dirname, './data/regencies.csv');
+
   try {
-    const db_regency = path.resolve(__dirname, './data/regencies.csv');
+    let { kode_induk } = req.query;
     const data = await csv().fromFile(db_regency);
 
-    let { kode_induk } = req.query;
+    if (!kode_induk) return res.json(data);
 
     const dataFilter = data.filter(
       (regency) => regency.kode_provinsi === kode_induk
@@ -37,21 +39,25 @@ const getRegency = async (req, res, next) => {
   }
 };
 
-// kelurahan
+// kecamatan
 const getDistrict = async (req, res, next) => {
-  try {
-    const db_district = path.resolve(__dirname, './data/districts.csv');
-    const data = await csv().fromFile(db_district);
+  const db_district = path.resolve(__dirname, './data/districts.csv');
 
+  try {
+    let { kode_induk } = req.query;
+    const data = await csv().fromFile(db_district);
     // console.log(data);
 
-    const { kode_induk } = req.query;
+    if (!kode_induk) return res.json(data);
 
-    const dataFilter = data.filter(
-      (district) => district.kode_kabupaten === kode_induk
+    // const dataFilter = data.filter(
+    //   (district) => district.kode_kabupaten === kode_induk
+    // );
+
+    // return res.json(dataFilter);
+    return res.json(
+      data.filter((district) => district.kode_kabupaten === kode_induk)
     );
-
-    return res.json(dataFilter);
   } catch (err) {
     return res.json({
       error: 1,
@@ -60,13 +66,17 @@ const getDistrict = async (req, res, next) => {
   }
 };
 
-// kecamatan
+// kelurahan
 const getVillage = async (req, res, next) => {
+  const db_village = path.resolve(__dirname, './data/villages.csv');
+
   try {
-    const db_village = path.resolve(__dirname, './data/villages.csv');
+    let { kode_induk } = req.query;
     const data = await csv().fromFile(db_village);
 
-    const { kode_induk } = req.query;
+    // console.log(data);
+
+    if (!kode_induk) return res.json(data);
 
     const dataFilter = data.filter(
       (village) => village.kode_kecamatan === kode_induk
