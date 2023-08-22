@@ -23,7 +23,7 @@ const update = async (req, res, next) => {
         (product) => product._id.toString() === item._id
       );
       return {
-        // _id: relatedProduct._id,
+        _id: relatedProduct._id,
         product: relatedProduct._id,
         price: relatedProduct.price,
         image_url: relatedProduct.image_url,
